@@ -204,4 +204,4 @@ You must be able to receive ROC AUC higher than 0.9. You also advised to play wi
 
 1. Add Test-Time-Augmentation (TTA) option to your code. For example, try to average predictions of horizontally flipped and original images. What is your uplift in terms of ROC AUC score?
 
-💡 [Tap here](https://forms.yandex.ru/cloud/646b47abc09c022a752404b0/) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.
+>Please leave feedback on the project in the [feedback form.](https://forms.yandex.ru/cloud/646b47abc09c022a752404b0/) 
