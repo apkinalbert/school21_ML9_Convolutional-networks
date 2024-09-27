@@ -61,8 +61,6 @@ Output of the convolutional layer is something that reminds an image: 3D object 
 
 ![io tensor](misc/images/io_tensor.png)
 
-There are different types of convolutions, this [source](https://www.youtube.com/watch?v=shVKhOmT0HE&t=3403s) describes all the details related to convolution variations.
-
 ### Pooling operation
 
 First (or the earliest) layers of the NN are focused on local regions (layers don’t pay attention to contents of the image in distant regions). This is called **the locality principle**. Learned local representations are aggregated to make predictions for the whole image. For aggregation we use other kinds of layers called **pooling layers**. Pooling layers consist of a fixed-shape window (for example 3x3) that slides over the image (according to its stride), computing a single output for each location. Almost all the time we use **max** (take max of elements inside the window) or **average** (average elements in the window) pooling.
@@ -122,8 +120,6 @@ This trick allows us to build networks consisting of tens and hundreds of layers
 Another way to propagate information from previous layers is to use dense blocks: instead of addition we concatenate output of the current layer and outputs of all previous layers and use this as input for the next convolutional layer. So, convolutional level 5 takes as input concatenated results of layer 3, layer 2, etc.
 
 ![Dense blocks](misc/images/dense_blocks.png)
-
-This [source](https://www.youtube.com/watch?v=shVKhOmT0HE&t=3403s) has good illustrations of numerous modern CNN models.
 
 ### Augmentations
 
