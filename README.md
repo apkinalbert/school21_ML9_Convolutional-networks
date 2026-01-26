@@ -189,9 +189,9 @@ This project will be evaluated by humans only. You are free to organize and name
 
 2. Write a custom pytorch dataset class for image and goal retrieval: read images using OpenCV2, extract targets using pandas. Make sure the dataset class has the correct API for sample retrieval. Create a pytorch DataLoader for your datasets.
 
-3. Rebuild the LeNet architecture. Use predefined layers from the pytorch library: Conv2d, Pooling, Linear. You can use the Dropout layer to improve the quality of your model.
+3. Rebuild the LeNet-5 architecture. Use predefined layers from the pytorch library: Conv2d, Pooling, Linear. You can use the Dropout layer to improve the quality of your model.
 
-4. Design a basic train-validation loop: iterate over the training dataset, batch by batch, update the parameters of the network, and check the quality of the model using the validation set. [Here](https://github.com/pytorch/examples/blob/main/mnist/main.py) you can find a comprehensive example of a basic training-validation pipeline (you can copy-paste it first, then modify it). As loss for your model use Binary Cross Entropy, as metric use ROC AUC score. Get ROC AUC higher than 0.75.
+4. Design a basic train-validation loop: iterate over the training dataset, batch by batch, update the parameters of the network, and check the quality of the model using the validation set. [Here](https://github.com/pytorch/examples/blob/main/mnist/main.py) you can find a comprehensive example of a basic training-validation pipeline (you can copy-paste it first, then modify it). As loss for your model use Cross Entropy, as metric use ROC AUC score. Get ROC AUC higher than 0.75.
 
 5. Pick any vision model or backbone (resnet18 is recommended as a baseline) from this [library](https://github.com/rwightman/pytorch-image-models). Change the head of your model to a linear layer with one output. Train the model for 2-4 epochs (iterations, traversals over the entire training dataset). You must be able to obtain a ROC AUC greater than 0.9. You are also advised to play with other backbones to get better results.
 
