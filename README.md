@@ -185,7 +185,7 @@ This project will be evaluated by humans only. You are free to organize and name
 
 ## Chapter V. Task
 
-1. Download the [Zindi gesture data](https://zindi.africa/competitions/kenyan-sign-language-classification-challenge/data). Examine the data for some time. Make sure you get rid of duplicate examples. Are there any mislabeled examples? Think about which extensions would be optimal for the current task. Design a training and validation split. Use a random 33% of the total data as the validation set.
+1. Download the [Zindi gesture data](https://disk.360.yandex.ru/d/N_DIJPiWP2wBTw). Examine the data for some time. Make sure you get rid of duplicate examples. Are there any mislabeled examples? Think about which extensions would be optimal for the current task. Design a training and validation split. Use a random 33% of the total data as the validation set.
 
 2. Write a custom pytorch dataset class for image and goal retrieval: read images using OpenCV2, extract targets using pandas. Make sure the dataset class has the correct API for sample retrieval. Create a pytorch DataLoader for your datasets.
 
