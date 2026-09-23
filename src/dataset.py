@@ -35,13 +35,15 @@ def make_albu_transform(
     if augmentations is not None:
         transforms.extend(augmentations)
 
-    transforms.extend([
-        A.Normalize(
-            mean=(0.485, 0.456, 0.406),
-            std=(0.229, 0.224, 0.225),
-        ),
-        ToTensorV2(),
-    ])
+    transforms.extend(
+        [
+            A.Normalize(
+                mean=(0.485, 0.456, 0.406),
+                std=(0.229, 0.224, 0.225),
+            ),
+            ToTensorV2(),
+        ]
+    )
 
     albu_transform = A.Compose(transforms)
 
@@ -159,11 +161,13 @@ def build_cache(
         images_dir=images_dir,
         transform=make_albu_transform(size=size),
     )
-    loader = DataLoader(ds, batch_size=batch_size, shuffle=False, num_workers=num_workers)
- 
+    loader = DataLoader(
+        ds, batch_size=batch_size, shuffle=False, num_workers=num_workers
+    )
+
     xs, ys = [], []
     for x, y in loader:
         xs.append(x)
         ys.append(y)
- 
+
     return torch.cat(xs), torch.cat(ys)

@@ -74,14 +74,18 @@ def validate(
             images = images.to(device, non_blocking=True)
             targets = targets.to(device, non_blocking=True)
 
-            with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=amp):
+            with torch.autocast(
+                device_type=device.type, dtype=torch.bfloat16, enabled=amp
+            ):
                 logits = model(images)
                 loss = loss_fn(logits, targets)
 
             probs = torch.softmax(logits.float(), dim=1)
 
             if tta:
-                with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=amp):
+                with torch.autocast(
+                    device_type=device.type, dtype=torch.bfloat16, enabled=amp
+                ):
                     logits_flipped = model(torch.flip(images, dims=[3]))
                 probs_flipped = torch.softmax(logits_flipped.float(), dim=1)
                 probs = (probs + probs_flipped) / 2
@@ -133,21 +137,10 @@ def fit(
 
     for epoch in range(epochs):
         train_loss = train_one_epoch(
-            model,
-            train_loader,
-            loss_fn,
-            optimizer,
-            device,
-            use_amp,
-            mix)
-
-        valid_loss, valid_roc = validate(
-            model,
-            valid_loader,
-            loss_fn,
-            device,
-            use_amp
+            model, train_loader, loss_fn, optimizer, device, use_amp, mix
         )
+
+        valid_loss, valid_roc = validate(model, valid_loader, loss_fn, device, use_amp)
 
         if valid_roc > best_roc:
             best_roc = valid_roc
@@ -220,13 +213,13 @@ def run_experiment(
         patience=patience,
         verbose=verbose,
         use_amp=use_amp,
-        mix=mix
+        mix=mix,
     )
 
     summary = {
         "experiment": name,
         **model_config,
-        "lr" : lr,
+        "lr": lr,
         "weight_decay": weight_decay,
         "best_roc": history["best_roc"],
         "best_epoch": history["best_epoch"] + 1,
