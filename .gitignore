@@ -49,3 +49,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+
+data/
+venv/
+__pycache__/
+models/
